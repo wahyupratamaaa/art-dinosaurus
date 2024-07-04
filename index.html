@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR.js Project</title>
+    <script src="node_modules/aframe/dist/aframe-master.min.js"></script>
+    <script src="node_modules/@ar-js-org/ar.js/aframe/build/aframe-ar-nft.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <!-- minimal loader shown until image descriptors are loaded -->
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+    <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true; precision: medium;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+      <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+      <a-nft type="nft" url="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" id="nft-marker">
+        <a-entity id="dino-model" gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf" scale="5 5 5" position="0 0.5 0" rotation="-80 0 0"> </a-entity>
+      </a-nft>
+      <a-entity id="dino-sound" sound="src: url(assets/sounds/raull.mp3); autoplay: false; loop: false; volume: 5"></a-entity>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="js/app.js"></script>
+  </body>
+</html>
